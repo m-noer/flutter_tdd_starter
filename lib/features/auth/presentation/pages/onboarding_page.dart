@@ -27,7 +27,6 @@ class OnBoardingPage extends StatelessWidget {
         bottom: false,
         child: IntroductionScreen(
           globalBackgroundColor: Colors.white,
-
           globalFooter: SizedBox(
             width: double.infinity,
             height: 60,
@@ -62,11 +61,9 @@ class OnBoardingPage extends StatelessWidget {
             ),
           ],
           onDone: () => _onIntroEnd(context),
-          //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
           showSkipButton: true,
           skipFlex: 0,
           nextFlex: 0,
-          //rtl: true, // Display as right-to-left
           skip: const Text('Skip'),
           next: const Icon(Icons.arrow_forward),
           done:
