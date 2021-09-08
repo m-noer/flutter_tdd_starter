@@ -32,7 +32,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     const pageDecoration = PageDecoration(
       titleTextStyle: TextStyle(fontSize: 28, fontWeight: FontWeight.w700),
       descriptionPadding: EdgeInsets.fromLTRB(16, 0, 16, 16),
-      pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
     );
 
@@ -40,7 +39,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       body: SafeArea(
         bottom: false,
         child: IntroductionScreen(
-          globalBackgroundColor: Colors.white,
           globalFooter: SizedBox(
             width: double.infinity,
             height: 60,

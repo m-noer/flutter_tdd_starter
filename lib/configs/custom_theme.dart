@@ -12,7 +12,7 @@ class CustomTheme {
 
   static final inputDecorationTheme = InputDecorationTheme(
     filled: true,
-    contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+    contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
     enabledBorder: UnderlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(10),
@@ -56,6 +56,7 @@ class CustomTheme {
   );
 
   static final lightTheme = ThemeData(
+    
     visualDensity: VisualDensity.adaptivePlatformDensity,
     brightness: Brightness.light,
     primaryColor: Palette.primaryColor,

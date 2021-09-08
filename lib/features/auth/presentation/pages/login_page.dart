@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_tdd_starter/configs/palette.dart';
 import 'package:flutter_tdd_starter/core/widgets/snackbar.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/features/auth/domain/entities/request/login_body.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:flutter_tdd_starter/l10n/l10n.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:flutter_tdd_starter/l10n/l10n.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -39,39 +38,70 @@ class _LoginPageState extends State<LoginPage> {
         child: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
             if (state is AuthFailure) {
-              Get.snackbar<void>(
-                'Failure',
-                state.message,
-                colorText: Colors.white,
-                backgroundColor: Palette.dangerColor,
-                margin: const EdgeInsets.all(10),
-              );
+              AppSnackbar.snackbarFailure('Failure', state.message);
             }
             if (state is AuthSuccess) {
               // Get.offAll<void>(() => const CounterPage());
-              AppSnackbar.snackbarSuccess('ss', 'ss');
+              AppSnackbar.snackbarSuccess('Success', 'Berhasil Login');
             }
           },
           child: SafeArea(
             child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    Lottie.asset('assets/lotties/intro1.json'),
-                    const SizedBox(height: 20),
-                    Form(
-                      key: _formKey,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          TextFormField(
-                            controller: usernameController,
-                            decoration: const InputDecoration(
-                              hintText: 'Username',
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Lottie.asset(
+                    'assets/lotties/intro1.json',
+                    height: Get.height / 2.2,
+                    fit: BoxFit.contain,
+                  ),
+                  // Image.asset(
+                  //   'assets/images/varx-logo.png',
+                  //   height: Get.height / 2.2,
+                  //   fit: BoxFit.contain,
+                  // ),
+                  const SizedBox(height: 30),
+                  Form(
+                    key: _formKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        TextFormField(
+                          controller: usernameController,
+                          decoration: const InputDecoration(
+                            hintText: 'Username',
+                            prefixIcon: Icon(Icons.people_outline),
+                          ),
+                          textInputAction: TextInputAction.next,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        ValueListenableBuilder(
+                          valueListenable: obscure,
+                          builder: (context, _, __) => TextFormField(
+                            controller: passwordController,
+                            obscureText: obscure.value,
+                            decoration: InputDecoration(
+                              hintText: 'Password',
+                              prefixIcon: const Icon(Icons.lock_open_outlined),
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  obscure.value = !obscure.value;
+                                },
+                                icon: obscure.value
+                                    ? const Icon(Icons.visibility)
+                                    : const Icon(Icons.visibility_off_outlined),
+                              ),
                             ),
-                            textInputAction: TextInputAction.next,
+                            textInputAction: TextInputAction.done,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter some text';
@@ -79,53 +109,27 @@ class _LoginPageState extends State<LoginPage> {
                               return null;
                             },
                           ),
-                          const SizedBox(height: 10),
-                          ValueListenableBuilder(
-                            valueListenable: obscure,
-                            builder: (context, _, __) => TextFormField(
-                              controller: passwordController,
-                              obscureText: obscure.value,
-                              decoration: InputDecoration(
-                                hintText: 'Password',
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    obscure.value = !obscure.value;
-                                  },
-                                  icon: obscure.value
-                                      ? const Icon(Icons.visibility)
-                                      : const Icon(Icons.visibility),
-                                ),
-                              ),
-                              textInputAction: TextInputAction.done,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                authBloc.add(
-                                  LoginEvent(
-                                    LoginBody(
-                                      username: usernameController.text,
-                                      password: passwordController.text,
-                                    ),
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              authBloc.add(
+                                LoginEvent(
+                                  LoginBody(
+                                    username: usernameController.text,
+                                    password: passwordController.text,
                                   ),
-                                );
-                              }
-                            },
-                            child: Text(AppLocalizations.of(context).login),
-                          ),
-                        ],
-                      ),
+                                ),
+                              );
+                            }
+                          },
+                          child: Text(AppLocalizations.of(context).login),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
