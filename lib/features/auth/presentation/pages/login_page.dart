@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_tdd_starter/core/widgets/snackbar.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/features/auth/domain/entities/request/login_body.dart';
@@ -73,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                           controller: usernameController,
                           decoration: const InputDecoration(
                             hintText: 'Username',
-                            prefixIcon: Icon(Icons.people_outline),
+                            prefixIcon: Icon(IconlyLight.user2),
                           ),
                           textInputAction: TextInputAction.next,
                           validator: (value) {
@@ -91,14 +92,14 @@ class _LoginPageState extends State<LoginPage> {
                             obscureText: obscure.value,
                             decoration: InputDecoration(
                               hintText: 'Password',
-                              prefixIcon: const Icon(Icons.lock_open_outlined),
+                              prefixIcon: const Icon(IconlyLight.lock),
                               suffixIcon: IconButton(
                                 onPressed: () {
                                   obscure.value = !obscure.value;
                                 },
                                 icon: obscure.value
-                                    ? const Icon(Icons.visibility)
-                                    : const Icon(Icons.visibility_off_outlined),
+                                    ? const Icon(IconlyLight.show)
+                                    : const Icon(IconlyLight.hide),
                               ),
                             ),
                             textInputAction: TextInputAction.done,

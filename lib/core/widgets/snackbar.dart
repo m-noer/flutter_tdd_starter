@@ -13,7 +13,7 @@ class AppSnackbar {
       margin: const EdgeInsets.all(10),
       maxWidth: 400,
       icon: const Icon(
-        IconlyBold.danger,
+        IconlyLight.dangerCircle,
         color: Colors.white,
       ),
     );
@@ -28,7 +28,7 @@ class AppSnackbar {
       margin: const EdgeInsets.all(10),
       maxWidth: 400,
       icon: const Icon(
-        Icons.check,
+        IconlyLight.tickSquare,
         color: Colors.white,
       ),
     );
