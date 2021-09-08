@@ -53,7 +53,7 @@ class _AppState extends State<App> {
         valueListenable: onBoard,
         builder: (context, _, __) {
           if (onBoard.value) {
-            return const OnBoardingPage();
+            return const LoginPage();
           } else {
             return const OnBoardingPage();
           }
