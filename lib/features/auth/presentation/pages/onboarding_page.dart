@@ -62,13 +62,13 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             PageViewModel(
               title: 'Fractional shares',
               body: 'Instead of having to buy an entire share.',
-              image: Lottie.asset('assets/lotties/intro2.json'),
+              image: Lottie.asset('assets/lotties/intro1.json'),
               decoration: pageDecoration,
             ),
             PageViewModel(
               title: 'Fractional shares',
               body: 'Instead of having to buy an entire share.',
-              image: Lottie.asset('assets/lotties/intro3.json'),
+              image: Lottie.asset('assets/lotties/intro1.json'),
               decoration: pageDecoration,
             ),
           ],

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
 set(BINARY_NAME "flutter_tdd_starter")
-set(APPLICATION_ID "com.example.flutter_tdd_starter")
+set(APPLICATION_ID "com.nerolab.flutter_tdd_starter")
 
 cmake_policy(SET CMP0063 NEW)
 

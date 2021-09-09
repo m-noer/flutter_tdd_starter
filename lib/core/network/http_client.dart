@@ -19,7 +19,7 @@ class HttpClient {
     };
 
     final options = BaseOptions(
-      baseUrl: config.apiBaseUrl!,
+      baseUrl: config.apiBaseUrl ?? '',
       connectTimeout: 20000,
       receiveTimeout: 20000,
       receiveDataWhenStatusError: true,

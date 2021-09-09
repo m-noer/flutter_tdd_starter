@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.verygoodcore">
+    package="com.nerolab.verygoodcore">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="Flutter Tdd"
         android:icon="@mipmap/ic_launcher">
