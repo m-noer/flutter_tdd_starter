@@ -50,14 +50,15 @@ class NotificationService {
   ///
   static const AndroidNotificationDetails androidNotificationDetails =
       AndroidNotificationDetails(
-          MyNotificationConstant.channelId,
-          MyNotificationConstant.channelName,
-          MyNotificationConstant.channelDescription,
-          importance: Importance.max,
-          priority: Priority.high,
-          ticker: 'ticker',
-          enableLights: true,
-          groupKey: MyNotificationConstant.groupKey);
+    MyNotificationConstant.channelId,
+    MyNotificationConstant.channelName,
+    MyNotificationConstant.channelDescription,
+    importance: Importance.max,
+    priority: Priority.high,
+    ticker: 'ticker',
+    enableLights: true,
+    groupKey: MyNotificationConstant.groupKey,
+  );
 
   /// * setup ios notification
   ///
@@ -105,7 +106,7 @@ class NotificationService {
 
     /// * setting android icon notification by assets name id drawable
     ///
-    const settingsAndroid = AndroidInitializationSettings('notification');
+    const settingsAndroid = AndroidInitializationSettings('launch_background');
 
     /// * setup iOS setting in initialization notification badge and other
     ///
@@ -127,15 +128,15 @@ class NotificationService {
     /// in case call this on initial class user already login [home page]
     /// and [navigation]
     ///
-    // await notificationsPlugin.initialize(
-    //   initializationSettings,
-    //   onSelectNotification: (String? payload) async {
-    //     if (payload != null) {
-    //       log('notification payload: $payload');
-    //     }
-    //     selectNotificationSubject.add(payload!);
-    //   },
-    // );
+    await notificationsPlugin.initialize(
+      initializationSettings,
+      onSelectNotification: (String? payload) async {
+        if (payload != null) {
+          log('notification payload: $payload');
+        }
+        selectNotificationSubject.add(payload!);
+      },
+    );
 
     /// * set foreground component show on notification
     ///
