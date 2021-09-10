@@ -1,7 +1,13 @@
+import 'dart:developer';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_tdd_starter/core/util/notification.dart';
 import 'package:flutter_tdd_starter/core/widgets/snackbar.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/features/auth/domain/entities/request/login_body.dart';
@@ -18,6 +24,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final notificationService = sl<NotificationService>();
+
   // Controller
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -30,6 +38,12 @@ class _LoginPageState extends State<LoginPage> {
 
   // Var
   final ValueNotifier<bool> obscure = ValueNotifier<bool>(true);
+
+  @override
+  void initState() {
+    super.initState();
+    notificationService.initialize();
+  }
 
   @override
   Widget build(BuildContext context) {

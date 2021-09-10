@@ -5,9 +5,9 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+import 'package:flutter_tdd_starter/app/app.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/pages/onboarding_page.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_tdd_starter/app/app.dart';
 
 void main() {
   group('App', () {

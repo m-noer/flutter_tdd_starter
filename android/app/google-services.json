@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "694994435341",
+    "project_id": "flutter-tdd-84713",
+    "storage_bucket": "flutter-tdd-84713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694994435341:android:fdf0c3bcedcb90b2970444",
+        "android_client_info": {
+          "package_name": "com.nerolab.varxcore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694994435341-bcutem7dnnski7o65jdrjn5ob3k1sbks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAENepZ_v0_WmmYmoGy9mziOPEl1UnzPio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694994435341-bcutem7dnnski7o65jdrjn5ob3k1sbks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

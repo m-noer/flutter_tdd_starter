@@ -1,5 +1,6 @@
 import 'package:flutter_tdd_starter/core/network/http_client.dart';
 import 'package:flutter_tdd_starter/core/packages/shared_prefs.dart';
+import 'package:flutter_tdd_starter/core/util/notification.dart';
 import 'package:flutter_tdd_starter/env/config.dart';
 import 'package:flutter_tdd_starter/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:flutter_tdd_starter/features/auth/data/repositories/auth_repository_impl.dart';
@@ -39,4 +40,6 @@ Future<void> init() async {
   // Network
   sl.registerLazySingleton(() => sl<HttpClient>().dio);
   sl.registerLazySingleton(() => HttpClient(config: sl(), preferences: sl()));
+
+  sl.registerLazySingleton(() => NotificationService());
 }

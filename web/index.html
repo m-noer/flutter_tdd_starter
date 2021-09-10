@@ -32,9 +32,26 @@
 </head>
 
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-messaging.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBB2jVmX6_ksm1ceNVGDr5m7aQIvDBeiiw",
+      authDomain: "flutter-tdd-84713.firebaseapp.com",
+      projectId: "flutter-tdd-84713",
+      storageBucket: "flutter-tdd-84713.appspot.com",
+      messagingSenderId: "694994435341",
+      appId: "1:694994435341:web:fbd3d23213f35f10970444",
+      measurementId: "G-KP9JV2QE9V"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
   <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
@@ -52,10 +69,13 @@
     if ('serviceWorker' in navigator) {
       // Service workers are supported. Use them.
       window.addEventListener('load', function () {
+        //register firebase-messaging service worker
+        navigator.serviceWorker.register("/firebase-messaging-sw.js");
         // Wait for registration to finish before dropping the <script> tag.
         // Otherwise, the browser will load the script multiple times,
         // potentially different versions.
         var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
+
         navigator.serviceWorker.register(serviceWorkerUrl)
           .then((reg) => {
             function waitForActivation(serviceWorker) {

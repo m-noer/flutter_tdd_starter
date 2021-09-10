@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_tdd_starter/configs/palette.dart';
 
 class CustomTheme {
@@ -7,7 +8,7 @@ class CustomTheme {
 
   static const appbarTHeme = AppBarTheme(
     elevation: 0,
-    brightness: Brightness.dark,
+    systemOverlayStyle: SystemUiOverlayStyle.light,
   );
 
   static final inputDecorationTheme = InputDecorationTheme(
@@ -56,7 +57,6 @@ class CustomTheme {
   );
 
   static final lightTheme = ThemeData(
-    
     visualDensity: VisualDensity.adaptivePlatformDensity,
     brightness: Brightness.light,
     primaryColor: Palette.primaryColor,
@@ -65,7 +65,6 @@ class CustomTheme {
     secondaryHeaderColor: Palette.secondaryColorDark,
     disabledColor: Colors.grey,
     dividerColor: Palette.dividerColor.withOpacity(0.5),
-    accentColor: Palette.primaryColor,
     backgroundColor: Colors.white,
     hintColor: Colors.grey,
     appBarTheme: appbarTHeme,
@@ -100,7 +99,6 @@ class CustomTheme {
     secondaryHeaderColor: Palette.secondaryColorDark,
     disabledColor: Palette.disabledColor,
     dividerColor: Palette.dividerColor.withOpacity(0.5),
-    accentColor: Palette.primaryColor,
     backgroundColor: Colors.white,
     hintColor: Colors.grey,
     appBarTheme: appbarTHeme.copyWith(

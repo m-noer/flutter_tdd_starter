@@ -9,6 +9,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_tdd_starter/app/app.dart';
@@ -16,20 +18,40 @@ import 'package:flutter_tdd_starter/app/app_bloc_observer.dart';
 import 'package:flutter_tdd_starter/di/injection.dart' as di;
 import 'package:flutter_tdd_starter/env/flavor.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background,
+  // such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
+  log('Handling a background message ${message.messageId}', name: 'FIREBASE');
+}
 
-  Bloc.observer = AppBlocObserver();
-  FlutterError.onError = (details) {
-    log(details.exceptionAsString(), stackTrace: details.stack);
-  };
-
-  await di.init();
-
-  FlavorSettings.development();
-
+void main() {
   runZonedGuarded(
-    () => runApp(const App()),
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+
+      Bloc.observer = AppBlocObserver();
+      FlutterError.onError = (details) {
+        log(details.exceptionAsString(), stackTrace: details.stack);
+      };
+
+      FlavorSettings.staging();
+
+      await di.init();
+      await Firebase.initializeApp();
+
+      /// Set the background messaging handler early on, as a named
+      /// top-level function
+      FirebaseMessaging.onBackgroundMessage(
+          _firebaseMessagingBackgroundHandler);
+
+      await FirebaseMessaging.instance.getToken().then((token) {
+        log('token: $token');
+      });
+
+      runApp(const App());
+    },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

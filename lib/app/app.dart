@@ -5,6 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_tdd_starter/configs/custom_theme.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/pages/onboarding_page.dart';
 import 'package:flutter_tdd_starter/l10n/l10n.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 

@@ -1,4 +1,4 @@
-package com.nerolab.verygoodcore
+package com.nerolab.varxcore
 
 import io.flutter.embedding.android.FlutterActivity
 
