@@ -32,22 +32,19 @@ void main() {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      await di.init();
 
       Bloc.observer = AppBlocObserver();
       FlutterError.onError = (details) {
         log(details.exceptionAsString(), stackTrace: details.stack);
       };
-      FlavorSettings.staging();
-
+      FlavorSettings.development();
+      await di.init();
       await Firebase.initializeApp();
 
       /// Set the background messaging handler early on, as a named
       /// top-level function
       FirebaseMessaging.onBackgroundMessage(
           _firebaseMessagingBackgroundHandler);
-
-      await FirebaseMessaging.instance.getToken();
 
       runApp(
         DevicePreview(
@@ -59,9 +56,9 @@ void main() {
       ///[console] flavor running
       if (!kReleaseMode) {
         final settings = Config.getInstance();
-        log('🚀 APP FLAVOR NAME      : ${settings.flavorName}');
-        log('🚀 APP API_BASE_URL     : ${settings.apiBaseUrl}');
-        log('🚀 APP API_SENTRY       : ${settings.apiSentry}');
+        log('🚀 APP FLAVOR NAME      : ${settings.flavorName}', name: 'FLAVOR');
+        log('🚀 APP API_BASE_URL     : ${settings.apiBaseUrl}', name: 'FLAVOR');
+        log('🚀 APP API_SENTRY       : ${settings.apiSentry}', name: 'FLAVOR');
       }
     },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),

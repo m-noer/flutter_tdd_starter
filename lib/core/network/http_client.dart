@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_tdd_starter/core/constants/key_constants.dart';
 import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
 import 'package:flutter_tdd_starter/env/config.dart';
 
@@ -15,7 +16,7 @@ class HttpClient {
 
   Dio _getDio() {
     final header = <String, dynamic>{
-      'isToken': preferences.isKeyExists('isToken')
+      'isToken': preferences.isKeyExists(KeyConstants.keyAccessToken)
     };
 
     final options = BaseOptions(

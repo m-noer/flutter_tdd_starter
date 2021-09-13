@@ -3,7 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_tdd_starter/core/constants/key_constants.dart';
 import 'package:flutter_tdd_starter/core/error/failures.dart';
+import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
+import 'package:flutter_tdd_starter/di/injection.dart';
 
 import 'package:flutter_tdd_starter/features/auth/domain/entities/request/login_body.dart';
 import 'package:flutter_tdd_starter/features/auth/domain/entities/response/login_entity.dart';
@@ -15,6 +18,7 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.loginUsecase) : super(AuthInitial());
 
+  final SharedPrefs prefs = sl<SharedPrefs>();
   final LoginUsecase loginUsecase;
 
   @override
@@ -34,7 +38,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async* {
     yield failureOrLogin.fold(
       (l) => AuthFailure(message: l.message),
-      (r) => AuthSuccess(),
+      (r) {
+        prefs.putString(KeyConstants.keyAccessToken, r.data.token);
+        return AuthSuccess();
+      },
     );
   }
 }

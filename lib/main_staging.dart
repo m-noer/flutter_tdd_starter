@@ -48,9 +48,7 @@ void main() {
       FirebaseMessaging.onBackgroundMessage(
           _firebaseMessagingBackgroundHandler);
 
-      await FirebaseMessaging.instance.getToken().then((token) {
-        log('token: $token');
-      });
+
 
       runApp(const App());
 

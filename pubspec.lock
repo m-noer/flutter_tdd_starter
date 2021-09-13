@@ -35,7 +35,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.8.1"
+    version: "2.6.1"
   bloc:
     dependency: "direct main"
     description:
@@ -147,7 +147,7 @@ packages:
       name: charcode
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.1"
+    version: "1.2.0"
   checked_yaml:
     dependency: transitive
     description:
@@ -324,12 +324,14 @@ packages:
     source: hosted
     version: "2.1.0"
   device_preview:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
-      name: device_preview
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.4"
+      path: device_preview
+      ref: HEAD
+      resolved-ref: b064d1872d6da151d22a66e028201df8fb26efe4
+      url: "git://github.com/Husssam12/flutter_device_preview.git"
+    source: git
+    version: "0.7.2"
   dio:
     dependency: "direct main"
     description:
@@ -530,7 +532,7 @@ packages:
     source: hosted
     version: "5.1.0"
   flutter_svg:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_svg
       url: "https://pub.dartlang.org"
@@ -553,13 +555,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.1.0"
+  form_field_validator:
+    dependency: "direct main"
+    description:
+      name: form_field_validator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   freezed_annotation:
     dependency: transitive
     description:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.2"
+    version: "0.14.3"
   frontend_server_client:
     dependency: transitive
     description:
@@ -623,6 +632,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  infinite_scroll_pagination:
+    dependency: "direct main"
+    description:
+      name: infinite_scroll_pagination
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   intl:
     dependency: "direct main"
     description:
@@ -848,7 +864,7 @@ packages:
     source: hosted
     version: "4.2.3"
   provider:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: provider
       url: "https://pub.dartlang.org"
@@ -957,6 +973,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sliver_tools:
+    dependency: transitive
+    description:
+      name: sliver_tools
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.5"
   source_gen:
     dependency: transitive
     description:
@@ -1061,21 +1084,21 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.17.10"
+    version: "1.16.8"
   test_api:
     dependency: transitive
     description:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.2"
+    version: "0.3.0"
   test_core:
     dependency: transitive
     description:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0"
+    version: "0.3.19"
   timezone:
     dependency: transitive
     description:
