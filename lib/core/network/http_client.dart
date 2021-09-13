@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_tdd_starter/core/packages/shared_prefs.dart';
+import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
 import 'package:flutter_tdd_starter/env/config.dart';
 
 class HttpClient {

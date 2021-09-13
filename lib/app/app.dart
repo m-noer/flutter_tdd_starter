@@ -1,19 +1,12 @@
-// Copyright (c) 2021, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_tdd_starter/configs/custom_theme.dart';
-import 'package:flutter_tdd_starter/core/packages/shared_prefs.dart';
+import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/pages/onboarding_page.dart';
-import 'package:flutter_tdd_starter/l10n/l10n.dart';
+import 'package:flutter_tdd_starter/l10n/localizations.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
@@ -43,12 +36,13 @@ class _AppState extends State<App> {
       theme: CustomTheme.lightTheme,
       darkTheme: CustomTheme.darkTheme,
       localizationsDelegates: const [
-        AppLocalizations.delegate,
+        AppLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
       ],
-      locale: DevicePreview.locale(context),
+      locale: localizedLabels.keys.first,
       builder: DevicePreview.appBuilder,
-      supportedLocales: AppLocalizations.supportedLocales,
+      supportedLocales: localizedLabels.keys.toList(),
       home: ValueListenableBuilder(
         valueListenable: onBoard,
         builder: (context, _, __) {

@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "694994435341",
+    "project_id": "flutter-tdd-84713",
+    "storage_bucket": "flutter-tdd-84713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694994435341:android:fdf0c3bcedcb90b2970444",
+        "android_client_info": {
+          "package_name": "com.nerolab.varxcore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694994435341-bcutem7dnnski7o65jdrjn5ob3k1sbks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAENepZ_v0_WmmYmoGy9mziOPEl1UnzPio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694994435341-bcutem7dnnski7o65jdrjn5ob3k1sbks.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "694994435341-6vfg6u3te851c86dfrne14758i44a2h5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nerolab.varxcore"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694994435341:android:2edf7dde70dd181e970444",
+        "android_client_info": {
+          "package_name": "com.nerolab.varxcore.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694994435341-bcutem7dnnski7o65jdrjn5ob3k1sbks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAENepZ_v0_WmmYmoGy9mziOPEl1UnzPio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694994435341-bcutem7dnnski7o65jdrjn5ob3k1sbks.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "694994435341-6vfg6u3te851c86dfrne14758i44a2h5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nerolab.varxcore"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694994435341:android:6b76d0f765be573f970444",
+        "android_client_info": {
+          "package_name": "com.nerolab.varxcore.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694994435341-bcutem7dnnski7o65jdrjn5ob3k1sbks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAENepZ_v0_WmmYmoGy9mziOPEl1UnzPio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694994435341-bcutem7dnnski7o65jdrjn5ob3k1sbks.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "694994435341-6vfg6u3te851c86dfrne14758i44a2h5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nerolab.varxcore"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tdd_starter/core/packages/shared_prefs.dart';
+import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/pages/login_page.dart';
 import 'package:get/get.dart';

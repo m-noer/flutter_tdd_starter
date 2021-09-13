@@ -17,6 +17,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_tdd_starter/app/app.dart';
 import 'package:flutter_tdd_starter/app/app_bloc_observer.dart';
 import 'package:flutter_tdd_starter/di/injection.dart' as di;
+import 'package:flutter_tdd_starter/env/config.dart';
 import 'package:flutter_tdd_starter/env/flavor.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -54,6 +55,14 @@ void main() {
           builder: (context) => const App(),
         ),
       );
+
+      ///[console] flavor running
+      if (!kReleaseMode) {
+        final settings = Config.getInstance();
+        log('🚀 APP FLAVOR NAME      : ${settings.flavorName}');
+        log('🚀 APP API_BASE_URL     : ${settings.apiBaseUrl}');
+        log('🚀 APP API_SENTRY       : ${settings.apiSentry}');
+      }
     },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
