@@ -20,6 +20,8 @@ import 'package:lottie/lottie.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  static const route = '/loginPage';
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -61,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
             }
 
             if (state is AuthSuccess) {
-              Get.offAll<void>(() => const DashboardPage());
+              Get.offAllNamed<void>(DashboardPage.route);
             }
           },
           builder: (context, state) {

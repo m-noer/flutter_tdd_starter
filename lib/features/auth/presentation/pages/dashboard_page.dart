@@ -4,6 +4,8 @@ import 'package:flutter_tdd_starter/core/widgets/empty.dart';
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
+  static const route = '/dashboardPage';
+
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }

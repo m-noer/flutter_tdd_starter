@@ -10,6 +10,8 @@ import 'package:lottie/lottie.dart';
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
 
+  static const route = '/onBoardingPage';
+
   @override
   _OnBoardingPageState createState() => _OnBoardingPageState();
 }
@@ -18,7 +20,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final prefs = sl<SharedPrefs>();
 
   void _onIntroEnd(BuildContext context) {
-    Get.offAll<void>(() => const LoginPage());
+    Get.offAllNamed<void>(LoginPage.route);
   }
 
   @override

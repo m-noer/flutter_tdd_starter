@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_tdd_starter/configs/custom_theme.dart';
 import 'package:flutter_tdd_starter/core/constants/key_constants.dart';
+import 'package:flutter_tdd_starter/core/routes/routes.dart';
 import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/pages/dashboard_page.dart';
@@ -23,20 +24,29 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   final prefs = sl<SharedPrefs>();
 
-  final ValueNotifier<bool> onBoard = ValueNotifier<bool>(true);
-
   @override
   void initState() {
     super.initState();
-    if (prefs.isKeyExists('onBoard')) {
-      onBoard.value = prefs.getBool('onBoard')!;
-    }
-    if (prefs.isKeyExists(KeyConstants.keyUserLoggedIn)) {}
   }
 
   @override
   Widget build(BuildContext context) {
     final isLogin = prefs.isKeyExists(KeyConstants.keyAccessToken);
+    final onBoard = prefs.isKeyExists(KeyConstants.keyOnBoard);
+
+    final routeObserver = Get.put<RouteObserver>(RouteObserver<PageRoute>());
+
+    String initialRoute() {
+      if (onBoard) {
+        if (isLogin) {
+          return DashboardPage.route;
+        } else {
+          return LoginPage.route;
+        }
+      } else {
+        return OnBoardingPage.route;
+      }
+    }
 
     return GetMaterialApp(
       theme: CustomTheme.lightTheme,
@@ -51,16 +61,9 @@ class _AppState extends State<App> {
       locale:
           kIsWeb ? localizedLabels.keys.first : DevicePreview.locale(context),
       supportedLocales: localizedLabels.keys.toList(),
-      home: ValueListenableBuilder(
-        valueListenable: onBoard,
-        builder: (context, _, __) {
-          if (onBoard.value) {
-            return isLogin ? const DashboardPage() : const LoginPage();
-          } else {
-            return const OnBoardingPage();
-          }
-        },
-      ),
+      navigatorObservers: [routeObserver],
+      initialRoute: initialRoute(),
+      getPages: Routes.page.map((page) => page).toList(),
     );
   }
 }
