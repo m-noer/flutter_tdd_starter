@@ -56,9 +56,9 @@ void main() {
       ///[console] flavor running
       if (!kReleaseMode) {
         final settings = Config.getInstance();
-        log('🚀 APP FLAVOR NAME      : ${settings.flavorName}', name: 'FLAVOR');
-        log('🚀 APP API_BASE_URL     : ${settings.apiBaseUrl}', name: 'FLAVOR');
-        log('🚀 APP API_SENTRY       : ${settings.apiSentry}', name: 'FLAVOR');
+        log('🚀 APP FLAVOR NAME      : ${settings.flavorName}', name: 'ENV');
+        log('🚀 APP API_BASE_URL     : ${settings.apiBaseUrl}', name: 'ENV');
+        log('🚀 APP API_SENTRY       : ${settings.apiSentry}', name: 'ENV');
       }
     },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),

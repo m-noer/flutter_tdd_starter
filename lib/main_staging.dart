@@ -1,10 +1,3 @@
-// Copyright (c) 2021, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-
 import 'dart:async';
 import 'dart:developer';
 
@@ -19,6 +12,7 @@ import 'package:flutter_tdd_starter/app/app_bloc_observer.dart';
 import 'package:flutter_tdd_starter/di/injection.dart' as di;
 import 'package:flutter_tdd_starter/env/config.dart';
 import 'package:flutter_tdd_starter/env/flavor.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background,
@@ -48,18 +42,22 @@ void main() {
       FirebaseMessaging.onBackgroundMessage(
           _firebaseMessagingBackgroundHandler);
 
-
-
-      runApp(const App());
+      await Sentry.init(
+        (options) => options..dsn = Config.getInstance().apiSentry,
+        appRunner: () => runApp(const App()),
+      );
 
       ///[console] flavor running
-    if (!kReleaseMode) {
-      final settings = Config.getInstance();
-      log('🚀 APP FLAVOR NAME      : ${settings.flavorName}');
-      log('🚀 APP API_BASE_URL     : ${settings.apiBaseUrl}');
-      log('🚀 APP API_SENTRY       : ${settings.apiSentry}');
-    }
+      if (!kReleaseMode) {
+        final settings = Config.getInstance();
+        log('🚀 APP FLAVOR NAME      : ${settings.flavorName}', name: 'ENV');
+        log('🚀 APP API_BASE_URL     : ${settings.apiBaseUrl}', name: 'ENV');
+        log('🚀 APP API_SENTRY       : ${settings.apiSentry}', name: 'ENV');
+      }
     },
-    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+    (error, stackTrace) async {
+      log(error.toString(), stackTrace: stackTrace);
+      await Sentry.captureException(error, stackTrace: stackTrace);
+    },
   );
 }
