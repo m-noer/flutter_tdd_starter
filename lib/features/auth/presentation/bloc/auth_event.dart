@@ -10,5 +10,5 @@ class LoginEvent extends AuthEvent {
   final LoginBody body;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [body];
 }

@@ -44,7 +44,7 @@ void main() {
 
       await Sentry.init(
         (options) => options..dsn = Config.getInstance().apiSentry,
-        appRunner: () => runApp(const App()),
+        appRunner: () => runApp(App()),
       );
 
       ///[console] flavor running

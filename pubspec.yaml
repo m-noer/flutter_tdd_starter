@@ -53,7 +53,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^5.0.0
-  mocktail: ^0.1.0
+  mockito: ^5.0.15
+  mocktail: ^0.1.4
   plugin_platform_interface: ^2.0.1
   very_good_analysis: ^2.3.0
 

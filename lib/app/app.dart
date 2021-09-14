@@ -14,20 +14,10 @@ import 'package:flutter_tdd_starter/l10n/localizations.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  App({Key? key}) : super(key: key);
 
-  @override
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
   final prefs = sl<SharedPrefs>();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

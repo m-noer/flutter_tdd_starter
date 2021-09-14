@@ -1,6 +1,4 @@
 class KeyConstants {
-  KeyConstants._();
-
   ///key constants for global
   static const String keyAccessToken = 'keyAccessToken';
   static const String keyUserLoggedIn = 'keyUserLoggedIn';

@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tdd_starter/core/constants/assets_constants.dart';
+import 'package:flutter_tdd_starter/core/constants/key_constants.dart';
 import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/features/auth/presentation/pages/login_page.dart';
@@ -26,7 +28,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   void initState() {
     super.initState();
-    prefs.putBool('onBoard', true);
+    prefs.putBool(KeyConstants.keyOnBoard, true);
   }
 
   @override
@@ -58,19 +60,19 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               body:
                   // ignore: lines_longer_than_80_chars
                   'Choose from 100,000 online video courses with new additions published',
-              image: Lottie.asset('assets/lotties/intro1.json'),
+              image: Lottie.asset(AssetsConstants.intro1),
               decoration: pageDecoration,
             ),
             PageViewModel(
               title: 'Fractional shares',
               body: 'Instead of having to buy an entire share.',
-              image: Lottie.asset('assets/lotties/intro1.json'),
+              image: Lottie.asset(AssetsConstants.intro1),
               decoration: pageDecoration,
             ),
             PageViewModel(
               title: 'Fractional shares',
               body: 'Instead of having to buy an entire share.',
-              image: Lottie.asset('assets/lotties/intro1.json'),
+              image: Lottie.asset(AssetsConstants.intro1),
               decoration: pageDecoration,
             ),
           ],

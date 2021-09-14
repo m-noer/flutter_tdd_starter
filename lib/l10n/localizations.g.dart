@@ -22,6 +22,7 @@ final localizedLabels = <Locale, AppLocalizationsData>{
       ),
     ),
     auth: const AppLocalizationsDataAuth(
+      register: 'Daftar',
       logout: 'Keluar',
       login: 'Masuk',
     ),
@@ -41,6 +42,7 @@ final localizedLabels = <Locale, AppLocalizationsData>{
       ),
     ),
     auth: const AppLocalizationsDataAuth(
+      register: 'Register',
       logout: 'Logout',
       login: 'Login',
     ),
@@ -213,23 +215,28 @@ class AppLocalizationsDataFormRequired {
 
 class AppLocalizationsDataAuth {
   const AppLocalizationsDataAuth({
+    required this.register,
     required this.logout,
     required this.login,
   });
 
+  final String register;
   final String logout;
   final String login;
   factory AppLocalizationsDataAuth.fromJson(Map<String, Object?> map) =>
       AppLocalizationsDataAuth(
+        register: map['register']! as String,
         logout: map['logout']! as String,
         login: map['login']! as String,
       );
 
   AppLocalizationsDataAuth copyWith({
+    String? register,
     String? logout,
     String? login,
   }) =>
       AppLocalizationsDataAuth(
+        register: register ?? this.register,
         logout: logout ?? this.logout,
         login: login ?? this.login,
       );
@@ -238,8 +245,13 @@ class AppLocalizationsDataAuth {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is AppLocalizationsDataAuth &&
+          register == other.register &&
           logout == other.logout &&
           login == other.login);
   @override
-  int get hashCode => runtimeType.hashCode ^ logout.hashCode ^ login.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      register.hashCode ^
+      logout.hashCode ^
+      login.hashCode;
 }
