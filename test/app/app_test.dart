@@ -13,6 +13,10 @@ void main() {
 
   group('App', () {
     testWidgets('App initial route to OnBoardingPage', (tester) async {
+      final prefs = sl<SharedPrefs>();
+
+      await prefs.clearAll();
+
       await tester.pumpWidget(App());
 
       expect(find.byType(OnBoardingPage), findsOneWidget);
