@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Palette {
-  const Palette._();
-
   static const primaryColor = Colors.blue;
   static const accentColor = Color(0xFF00C4FF);
   static const primaryDark = Color(0xFF042F34);

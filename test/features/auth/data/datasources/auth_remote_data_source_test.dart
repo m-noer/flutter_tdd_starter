@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_tdd_starter/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:flutter_tdd_starter/features/auth/data/models/login_model.dart';
 import 'package:flutter_tdd_starter/features/auth/domain/entities/entities.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -11,10 +13,12 @@ import 'auth_remote_data_source_test.mocks.dart';
 void main() {
   final tdio = Dio();
   late MockHttpClientAdapter dioAdapterMock;
+  late AuthRemoteDataSourceImpl remoteData;
 
   setUp(() {
     dioAdapterMock = MockHttpClientAdapter();
     tdio.httpClientAdapter = dioAdapterMock;
+    remoteData = AuthRemoteDataSourceImpl(tdio);
   });
 
   group('AuthRemoteDataSource', () {
@@ -24,22 +28,22 @@ void main() {
       final fakeData = {
         'status': 200,
         'message': 'ok',
-        'data': {'token': '232qfdw'}
+        'data': {'token': 'token'}
       };
 
-      final responsepayload = jsonEncode(fakeData);
+      final responsePayload = json.encode(fakeData);
+
       final httpResponse =
-          ResponseBody.fromString(responsepayload, 200, headers: {
+          ResponseBody.fromString(responsePayload, 200, headers: {
         Headers.contentTypeHeader: [Headers.jsonContentType]
       });
 
       when(dioAdapterMock.fetch(any, any, any))
           .thenAnswer((_) async => httpResponse);
 
-      final response = await tdio.post<Map<String, dynamic>>('/any url',
-          data: loginBody.toJson());
+      final subject = await remoteData.requestLogin(loginBody);
 
-      expect(response.data, equals(fakeData));
+      expect(subject, LoginModel.fromJson(fakeData));
     });
   });
 }
