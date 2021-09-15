@@ -39,6 +39,7 @@ class LoginForm extends StatelessWidget {
           _buildPasswordField(labels),
           const SizedBox(height: 20),
           ElevatedButton(
+            key: const Key('loginBtn'),
             onPressed: onLogin,
             child: Text(labels.auth.login),
           ),
@@ -49,6 +50,7 @@ class LoginForm extends StatelessWidget {
 
   Widget _buildUsernameField(AppLocalizationsData labels) {
     return TextFormField(
+      key: const Key('usernameField'),
       controller: usernameController,
       decoration: InputDecoration(
         hintText: labels.form.username,
@@ -66,6 +68,7 @@ class LoginForm extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: obscure,
       builder: (context, _, __) => TextFormField(
+        key: const Key('passwordField'),
         controller: passwordController,
         obscureText: obscure.value,
         decoration: InputDecoration(
