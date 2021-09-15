@@ -26,5 +26,5 @@ jobs:
       - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
         with:
-          min_coverage: 50
-          exclude: '**/*.g.dart ** lib/**.g.dart'
+          min_coverage: 80
+          exclude: '**/*.g.dart lib/**.g.dart lib/core/**'

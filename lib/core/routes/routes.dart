@@ -4,8 +4,6 @@ import 'package:flutter_tdd_starter/features/auth/presentation/pages/onboarding_
 import 'package:get/route_manager.dart';
 
 class Routes {
-  const Routes._();
-
   static List<GetPage> page = <GetPage>[
     GetPage<void>(
       name: OnBoardingPage.route,

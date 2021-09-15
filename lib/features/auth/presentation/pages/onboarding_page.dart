@@ -21,7 +21,7 @@ class OnBoardingPage extends StatefulWidget {
 class _OnBoardingPageState extends State<OnBoardingPage> {
   final prefs = sl<SharedPrefs>();
 
-  void _onIntroEnd(BuildContext context) {
+  void _onIntroEnd() {
     Get.offAllNamed<void>(LoginPage.route);
   }
 
@@ -47,7 +47,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             width: double.infinity,
             height: 60,
             child: ElevatedButton(
-              onPressed: () => _onIntroEnd(context),
+              key: const Key('onBoardSkip'),
+              onPressed: _onIntroEnd,
               child: const Text(
                 'Lets go right away!',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -76,7 +77,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               decoration: pageDecoration,
             ),
           ],
-          onDone: () => _onIntroEnd(context),
+          onDone: _onIntroEnd,
           showSkipButton: true,
           skipFlex: 0,
           nextFlex: 0,

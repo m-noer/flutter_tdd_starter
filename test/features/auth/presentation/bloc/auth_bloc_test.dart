@@ -20,7 +20,7 @@ Future<void> main() async {
 
   setUp(() async {
     await init();
-    
+
     mockLoginUsecase = MockLoginUsecase();
     bloc = AuthBloc(mockLoginUsecase);
   });
