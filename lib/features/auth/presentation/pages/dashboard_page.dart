@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tdd_starter/core/util/notification.dart';
 import 'package:flutter_tdd_starter/core/widgets/empty.dart';
+import 'package:flutter_tdd_starter/di/injection.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -11,6 +13,15 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  // Notificaion
+  final notificationService = sl<NotificationService>();
+
+  @override
+  void initState() {
+    super.initState();
+    notificationService.initialize();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

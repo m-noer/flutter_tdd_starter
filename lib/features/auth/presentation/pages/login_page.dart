@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tdd_starter/core/constants/assets_constants.dart';
-import 'package:flutter_tdd_starter/core/util/notification.dart';
 import 'package:flutter_tdd_starter/core/widgets/loading_with_text.dart';
 import 'package:flutter_tdd_starter/core/widgets/snackbar.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
@@ -25,9 +24,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // Notificaion
-  final notificationService = sl<NotificationService>();
-
   // Controller
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -44,7 +40,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    notificationService.initialize();
   }
 
   void onLogin() {

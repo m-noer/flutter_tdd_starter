@@ -8,15 +8,19 @@ import 'package:flutter_tdd_starter/features/auth/presentation/bloc/auth_bloc.da
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'auth_bloc_test.mocks.dart';
 
 @GenerateMocks([LoginUsecase])
-void main() {
+Future<void> main() async {
   late AuthBloc bloc;
   late MockLoginUsecase mockLoginUsecase;
+  TestWidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences.setMockInitialValues({});
 
   setUp(() async {
     await init();
+    
     mockLoginUsecase = MockLoginUsecase();
     bloc = AuthBloc(mockLoginUsecase);
   });

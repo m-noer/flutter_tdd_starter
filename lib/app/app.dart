@@ -22,7 +22,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isLogin = prefs.isKeyExists(KeyConstants.keyAccessToken);
-    final onBoard = prefs.isKeyExists(KeyConstants.keyOnBoard);
+    final onBoard = prefs.getBool(KeyConstants.keyOnBoard) ?? false;
 
     final routeObserver = Get.put<RouteObserver>(RouteObserver<PageRoute>());
 
