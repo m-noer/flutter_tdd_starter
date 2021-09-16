@@ -15,6 +15,7 @@ class AppSnackbar {
       icon: const Icon(
         IconlyLight.dangerCircle,
         color: Colors.white,
+        key: Key('fail'),
       ),
     );
   }
