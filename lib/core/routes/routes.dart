@@ -1,6 +1,6 @@
-import 'package:flutter_tdd_starter/features/auth/presentation/pages/dashboard_page.dart';
-import 'package:flutter_tdd_starter/features/auth/presentation/pages/login_page.dart';
-import 'package:flutter_tdd_starter/features/auth/presentation/pages/onboarding_page.dart';
+import 'package:flutter_tdd_starter/presentation/auth/pages/dashboard_page.dart';
+import 'package:flutter_tdd_starter/presentation/auth/pages/login_page.dart';
+import 'package:flutter_tdd_starter/presentation/auth/pages/onboarding_page.dart';
 import 'package:get/route_manager.dart';
 
 class Routes {

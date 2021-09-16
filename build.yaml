@@ -6,6 +6,8 @@ targets:
           include:
             - lib/features/auth/data/models/**.dart
             - lib/features/auth/domain/entities/**.dart
+            - lib/data/*/models/**.dart
+            - lib/domain/*/entities/**.dart
         options:
           any_map: false
           checked: false

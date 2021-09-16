@@ -10,7 +10,7 @@ extension AppLocalizationsExtensions on BuildContext {
   }
 }
 
-@SheetLocalization('1TWn1tvLS4ac4SOw9pAj87J_E2WlJ9rtqIhNwlLf8scc', '0', 7)
+@SheetLocalization('1TWn1tvLS4ac4SOw9pAj87J_E2WlJ9rtqIhNwlLf8scc', '0', 8)
 class AppLocalizationsDelegate
     extends LocalizationsDelegate<AppLocalizationsData> {
   const AppLocalizationsDelegate();

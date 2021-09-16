@@ -1,12 +1,12 @@
 import 'package:flutter_tdd_starter/core/network/http_client.dart';
 import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
 import 'package:flutter_tdd_starter/core/util/notification.dart';
+import 'package:flutter_tdd_starter/data/auth/datasources/auth_remote_data_source.dart';
+import 'package:flutter_tdd_starter/data/auth/repositories/repository_impl.dart';
+import 'package:flutter_tdd_starter/domain/auth/repositories/repository.dart';
+import 'package:flutter_tdd_starter/domain/auth/usecases/usecase.dart';
 import 'package:flutter_tdd_starter/env/config.dart';
-import 'package:flutter_tdd_starter/features/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:flutter_tdd_starter/features/auth/data/repositories/auth_repository_impl.dart';
-import 'package:flutter_tdd_starter/features/auth/domain/repositories/auth_repository.dart';
-import 'package:flutter_tdd_starter/features/auth/domain/usecases/login_usecase.dart';
-import 'package:flutter_tdd_starter/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:flutter_tdd_starter/presentation/auth/bloc/auth_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
