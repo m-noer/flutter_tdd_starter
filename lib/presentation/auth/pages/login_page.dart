@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_tdd_starter/core/constants/assets_constants.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart';
 import 'package:flutter_tdd_starter/l10n/localizations.dart';
 import 'package:flutter_tdd_starter/presentation/auth/bloc/auth_bloc.dart';
 import 'package:flutter_tdd_starter/presentation/auth/pages/dashboard_page.dart';
-import 'package:flutter_tdd_starter/presentation/auth/widgets/login_form.dart';
 import 'package:flutter_tdd_starter/presentation/core/widgets/loading_with_text.dart';
-import 'package:flutter_tdd_starter/presentation/core/widgets/snackbar.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -86,7 +86,17 @@ class _LoginViewState extends State<LoginView> {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthFailure) {
-          AppSnackbar.snackbarFailure(labels.state.failure, state.message);
+          // AppSnackbar.snackbarFailure(labels.state.failure, state.message);
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              key: const Key('snack_bar_failure'),
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text('Login Failure'),
+                  Icon(Icons.error),
+                ],
+              ),
+              backgroundColor: Colors.redAccent));
         }
 
         if (state is AuthSuccess) {
@@ -105,16 +115,67 @@ class _LoginViewState extends State<LoginView> {
                   children: [
                     Lottie.asset(
                       AssetsConstants.intro1,
-                      height: Get.height / 2.4,
+                      height: Get.height / 5,
                       fit: BoxFit.contain,
                     ),
                     const SizedBox(height: 30),
-                    LoginForm(
-                      formLoginKey: _formLoginKey,
-                      onLogin: onLogin,
-                      usernameController: usernameController,
-                      obscure: obscure,
-                      passwordController: passwordController,
+                    Form(
+                      key: _formLoginKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            labels.auth.login,
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                          const SizedBox(height: 20),
+                          TextFormField(
+                            key: const Key('usernameField'),
+                            controller: usernameController,
+                            decoration: InputDecoration(
+                              hintText: labels.form.username,
+                              prefixIcon: const Icon(IconlyLight.user2),
+                            ),
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            textInputAction: TextInputAction.next,
+                            validator: RequiredValidator(
+                              errorText: labels.form.required.username,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          ValueListenableBuilder(
+                            valueListenable: obscure,
+                            builder: (context, _, __) => TextFormField(
+                              key: const Key('passwordField'),
+                              controller: passwordController,
+                              obscureText: obscure.value,
+                              decoration: InputDecoration(
+                                hintText: labels.form.password,
+                                prefixIcon: const Icon(IconlyLight.lock),
+                                suffixIcon: IconButton(
+                                  key: const Key('obscureButton'),
+                                  onPressed: () {
+                                    obscure.value = !obscure.value;
+                                  },
+                                  icon: obscure.value
+                                      ? const Icon(IconlyLight.show)
+                                      : const Icon(IconlyLight.hide),
+                                ),
+                              ),
+                              validator: RequiredValidator(
+                                errorText: labels.form.required.password,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
+                            key: const Key('loginBtn'),
+                            onPressed: onLogin,
+                            child: Text(labels.auth.login),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 20),
                   ],
@@ -122,6 +183,8 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             if (state is AuthLoading) const LoadingWithText(),
+            if (state is AuthFailure) Text(state.message),
+            if (state is AuthSuccess) const Text('success'),
           ],
         );
       },

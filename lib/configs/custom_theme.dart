@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_tdd_starter/configs/palette.dart';
 
 class CustomTheme {
-  CustomTheme._();
-
   static const appbarTHeme = AppBarTheme(
     elevation: 0,
     systemOverlayStyle: SystemUiOverlayStyle.light,
