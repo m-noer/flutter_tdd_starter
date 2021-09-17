@@ -1,6 +1,6 @@
-import 'package:flutter_tdd_starter/presentation/auth/pages/dashboard_page.dart';
 import 'package:flutter_tdd_starter/presentation/auth/pages/login_page.dart';
-import 'package:flutter_tdd_starter/presentation/auth/pages/onboarding_page.dart';
+import 'package:flutter_tdd_starter/presentation/dashboard/pages/dashboard_page.dart';
+import 'package:flutter_tdd_starter/presentation/onboard/pages/onboarding_page.dart';
 import 'package:get/route_manager.dart';
 
 class Routes {
@@ -15,7 +15,7 @@ class Routes {
     ),
     GetPage<void>(
       name: LoginPage.route,
-      page: () => const LoginPage(),
+      page: () => LoginPage(),
     ),
   ];
 }

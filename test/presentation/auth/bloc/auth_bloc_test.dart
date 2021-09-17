@@ -4,7 +4,7 @@ import 'package:flutter_tdd_starter/core/error/failures.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart';
 import 'package:flutter_tdd_starter/domain/auth/usecases/usecase.dart';
-import 'package:flutter_tdd_starter/presentation/auth/bloc/auth_bloc.dart';
+import 'package:flutter_tdd_starter/presentation/auth/blocs/auth_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

@@ -4,10 +4,10 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_tdd_starter/core/constants/key_constants.dart';
-import 'package:flutter_tdd_starter/core/constants/notification_constants.dart';
-import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
+import 'package:flutter_tdd_starter/constants/key_constants.dart';
+import 'package:flutter_tdd_starter/constants/notification_constants.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
+import 'package:flutter_tdd_starter/utils/services/shared_prefs.dart';
 import 'package:rxdart/subjects.dart';
 
 class ReceivedNotification {

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_tdd_starter/constants/api_path.dart';
 import 'package:flutter_tdd_starter/data/auth/models/models.dart';
 import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart';
 
@@ -13,7 +14,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<LoginEntity> requestLogin(LoginBody body) async {
-    final _response = await _client.post<Map<String, dynamic>>('/auth/login',
+    final _response = await _client.post<Map<String, dynamic>>(ApiPath.login,
         data: body.toJson());
 
     return LoginModel.fromJson(_response.data!);

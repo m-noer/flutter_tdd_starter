@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flutter_tdd_starter/configs/palette.dart';
+import 'package:flutter_tdd_starter/configs/themes/palette.dart';
 import 'package:get/get.dart';
 
 class AppSnackbar {
@@ -17,6 +17,7 @@ class AppSnackbar {
         color: Colors.white,
         key: Key('fail'),
       ),
+      duration: const Duration(seconds: 2),
     );
   }
 

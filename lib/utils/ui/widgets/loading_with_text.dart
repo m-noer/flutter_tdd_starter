@@ -16,7 +16,7 @@ class LoadingWithText extends StatelessWidget {
     final labels = context.localizations;
 
     return Container(
-      color: Colors.black.withOpacity(0.8),
+      color: Colors.black.withOpacity(0.6),
       width: double.infinity,
       height: Get.height,
       child: Center(

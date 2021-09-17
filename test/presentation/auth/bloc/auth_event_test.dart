@@ -1,5 +1,5 @@
 import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart';
-import 'package:flutter_tdd_starter/presentation/auth/bloc/auth_bloc.dart';
+import 'package:flutter_tdd_starter/presentation/auth/blocs/auth_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

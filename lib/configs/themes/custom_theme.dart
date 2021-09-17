@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_tdd_starter/configs/palette.dart';
+import 'package:flutter_tdd_starter/configs/themes/palette.dart';
 
 class CustomTheme {
   static const appbarTHeme = AppBarTheme(

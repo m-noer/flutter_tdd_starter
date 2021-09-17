@@ -1,5 +1,5 @@
-import 'package:flutter_tdd_starter/presentation/auth/pages/dashboard_page.dart';
-import 'package:flutter_tdd_starter/presentation/core/widgets/empty.dart';
+import 'package:flutter_tdd_starter/presentation/dashboard/pages/dashboard_page.dart';
+import 'package:flutter_tdd_starter/utils/ui/widgets/empty.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../helpers/pump_app.dart';

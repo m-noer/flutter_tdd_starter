@@ -27,4 +27,4 @@ jobs:
         uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
         with:
           min_coverage: 80
-          exclude: '**/*.g.dart lib/**.g.dart lib/core/**'
+          exclude: '**/*.g.dart lib/**.g.dart lib/core/** lib/configs/** lib/utils/**'

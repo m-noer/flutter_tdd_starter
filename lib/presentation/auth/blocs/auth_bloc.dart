@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_tdd_starter/core/constants/key_constants.dart';
+import 'package:flutter_tdd_starter/constants/key_constants.dart';
 import 'package:flutter_tdd_starter/core/error/failures.dart';
-import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart';
 import 'package:flutter_tdd_starter/domain/auth/usecases/usecase.dart';
+import 'package:flutter_tdd_starter/utils/services/shared_prefs.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

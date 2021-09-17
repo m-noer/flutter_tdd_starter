@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tdd_starter/core/constants/assets_constants.dart';
-import 'package:flutter_tdd_starter/core/constants/key_constants.dart';
-import 'package:flutter_tdd_starter/core/storage/shared_prefs.dart';
+import 'package:flutter_tdd_starter/constants/assets_constants.dart';
+import 'package:flutter_tdd_starter/constants/key_constants.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
 import 'package:flutter_tdd_starter/presentation/auth/pages/login_page.dart';
+import 'package:flutter_tdd_starter/utils/services/shared_prefs.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:lottie/lottie.dart';

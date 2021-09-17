@@ -1,13 +1,13 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart';
-import 'package:flutter_tdd_starter/presentation/auth/bloc/auth_bloc.dart';
-import 'package:flutter_tdd_starter/presentation/auth/pages/login_page.dart';
-import 'package:flutter_tdd_starter/presentation/core/widgets/loading_with_text.dart';
+import 'package:flutter_tdd_starter/presentation/auth/blocs/auth_bloc.dart';
+import 'package:flutter_tdd_starter/presentation/auth/widgets/login_view.dart';
+import 'package:flutter_tdd_starter/presentation/dashboard/pages/dashboard_page.dart';
+import 'package:flutter_tdd_starter/utils/ui/widgets/loading_with_text.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/get.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../helpers/pump_app.dart';
@@ -18,20 +18,11 @@ class AuthStateFake extends Fake implements AuthState {}
 
 class AuthEventFake extends Fake implements AuthEvent {}
 
-// @GenerateMocks([AuthBloc, LoginUsecase])
 void main() {
-  // widgetSetup();
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   group('Login Page ...', () {
     late AuthBlocMock authBlocMock;
-
-    const loginEntity = LoginEntity(
-      data: DataLoginEntity(
-        token: 'token',
-      ),
-      status: 200,
-      message: 'message',
-    );
 
     setUpAll(() {
       registerFallbackValue<AuthEvent>(AuthEventFake());
@@ -41,15 +32,43 @@ void main() {
     setUp(() {
       authBlocMock = AuthBlocMock();
       when(() => authBlocMock.state).thenReturn(AuthInitial());
-      when(() => authBlocMock.loginUsecase.execute(any()))
-          .thenAnswer((_) => Future.value(const Right(loginEntity)));
+      // when(() => authBlocMock.loginUsecase.execute(any()))
+      //     .thenAnswer((_) => Future.value(const Right(loginEntity)));
     });
 
-    // final usernameField = find.byKey(const Key('usernameField'));
-    // final passwordField = find.byKey(const Key('passwordField'));
-    // final loginBtn = find.byKey(const Key('loginBtn'));
+    final usernameField = find.byKey(const Key('usernameField'));
+    final passwordField = find.byKey(const Key('passwordField'));
+    final loginBtn = find.byKey(const Key('loginBtn'));
 
-    testWidgets('login page ...', (tester) async {
+    testWidgets('Form validation ...', (tester) async {
+      await tester.pumpApp(
+        BlocProvider<AuthBloc>(
+          create: (context) => authBlocMock,
+          child: Scaffold(
+            body: LoginView(authBloc: authBlocMock),
+          ),
+        ),
+      );
+
+      expect(usernameField, findsOneWidget);
+      expect(passwordField, findsOneWidget);
+      expect(loginBtn, findsOneWidget);
+
+      await tester.enterText(usernameField, 'guru1');
+      await tester.enterText(passwordField, 'password');
+
+      final formWidgetFinder = find.byType(Form);
+      final formWidget = tester.widget(formWidgetFinder) as Form;
+
+      final formKey = formWidget.key! as GlobalKey<FormState>;
+
+      // await tester.tap(loginBtn);
+      await tester.pump();
+
+      expect(formKey.currentState!.validate(), isTrue);
+      await tester.tap(loginBtn);
+    });
+    testWidgets('AuthLoading ...', (tester) async {
       when(() => authBlocMock.state).thenReturn(AuthLoading());
 
       await tester.pumpApp(
@@ -61,35 +80,10 @@ void main() {
         ),
       );
 
-      //   // expect(find.byType(DashboardPage), findsOneWidget);
-
-      //   // expect(find.byType(LoginForm), findsOneWidget);
-      //   // expect(usernameField, findsOneWidget);
-      //   // expect(passwordField, findsOneWidget);
-      //   // expect(loginBtn, findsOneWidget);
-
-      //   // await tester.tap(loginBtn);
-      //   // await tester.pump();
-      //   // expect(find.text('Please enter the username'), findsOneWidget);
-      //   // expect(find.text('Please enter a password'), findsOneWidget);
-
-      //   await tester.enterText(usernameField, 'guru1');
-      //   await tester.enterText(passwordField, 'password');
-
-      //   await tester.tap(loginBtn);
-      //   await tester.pump();
-
       expect(find.byType(LoadingWithText), findsOneWidget);
-
-      //   // verify(() => authBlocMock.add(const LoginEvent(
-      //   //     LoginBody(username: 'guru1', password: 'password')))).called(1);
     });
 
     testWidgets('AuthFailure', (tester) async {
-      // when(() => authBlocMock.state)
-      //     .thenReturn(const AuthFailure(message: 'fail'));
-      final snackBarFailureFinder = find.byKey(const Key('snack_bar_failure'));
-
       whenListen(
           authBlocMock,
           Stream.fromIterable(
@@ -103,19 +97,33 @@ void main() {
           ),
         ),
       );
-      expect(snackBarFailureFinder, findsNothing);
-      // await tester.pump();
+      expect(Get.isSnackbarOpen, true);
 
-      // expect(snackBarFailureFinder, findsOneWidget);
+      await tester.pump(const Duration(seconds: 2));
+    });
 
-      // await tester.enterText(usernameField, 'guru1');
-      // await tester.enterText(passwordField, 'password');
+    testWidgets('AuthSuccess', (tester) async {
+      whenListen(
+        authBlocMock,
+        Stream.fromIterable(
+          [
+            AuthLoading(),
+            AuthSuccess(),
+          ],
+        ),
+      );
 
-      // await tester.tap(loginBtn);
-      // await tester.pump();
+      await tester.pumpApp(
+        BlocProvider<AuthBloc>(
+          create: (context) => authBlocMock,
+          child: Scaffold(
+            body: LoginView(authBloc: authBlocMock),
+          ),
+        ),
+      );
+      expect(Get.currentRoute, DashboardPage.route);
 
-      // expect(find.text('fail'), findsOneWidget);
-      // expect(find.byKey(const Key('snack_bar_failure')), findsOneWidget);
+      // await tester.pump(const Duration(seconds: 2));
     });
 
     testWidgets('Obscure icon button', (tester) async {
