@@ -76,7 +76,7 @@ class _LoginViewState extends State<LoginView> {
                   children: [
                     Lottie.asset(
                       AssetsConstants.intro1,
-                      height: Get.height / 2.5,
+                      height: Get.height / 2.4,
                       fit: BoxFit.contain,
                     ),
                     const SizedBox(height: 30),
