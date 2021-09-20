@@ -324,14 +324,12 @@ packages:
     source: hosted
     version: "2.1.0"
   device_preview:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
-      path: device_preview
-      ref: HEAD
-      resolved-ref: b064d1872d6da151d22a66e028201df8fb26efe4
-      url: "git://github.com/Husssam12/flutter_device_preview.git"
-    source: git
-    version: "0.7.2"
+      name: device_preview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.4"
   dio:
     dependency: "direct main"
     description:
@@ -928,7 +926,7 @@ packages:
     source: hosted
     version: "4.2.3"
   provider:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: provider
       url: "https://pub.dartlang.org"

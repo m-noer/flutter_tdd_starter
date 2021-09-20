@@ -19,6 +19,7 @@ import 'package:flutter_tdd_starter/app/app_bloc_observer.dart';
 import 'package:flutter_tdd_starter/di/injection.dart' as di;
 import 'package:flutter_tdd_starter/env/config.dart';
 import 'package:flutter_tdd_starter/env/flavor.dart';
+import 'package:get/get.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background,
@@ -39,12 +40,15 @@ void main() {
       };
       FlavorSettings.development();
       await di.init();
-      await Firebase.initializeApp();
 
-      /// Set the background messaging handler early on, as a named
-      /// top-level function
-      FirebaseMessaging.onBackgroundMessage(
-          _firebaseMessagingBackgroundHandler);
+      if (GetPlatform.isMobile || GetPlatform.isWeb) {
+        await Firebase.initializeApp();
+
+        /// Set the background messaging handler early on, as a named
+        /// top-level function
+        FirebaseMessaging.onBackgroundMessage(
+            _firebaseMessagingBackgroundHandler);
+      }
 
       runApp(
         DevicePreview(

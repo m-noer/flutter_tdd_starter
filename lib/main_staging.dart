@@ -12,6 +12,9 @@ import 'package:flutter_tdd_starter/app/app_bloc_observer.dart';
 import 'package:flutter_tdd_starter/di/injection.dart' as di;
 import 'package:flutter_tdd_starter/env/config.dart';
 import 'package:flutter_tdd_starter/env/flavor.dart';
+import 'package:get/get.dart';
+import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -35,12 +38,14 @@ void main() {
       FlavorSettings.staging();
 
       await di.init();
-      await Firebase.initializeApp();
+      if (GetPlatform.isMobile || GetPlatform.isWeb) {
+        await Firebase.initializeApp();
 
-      /// Set the background messaging handler early on, as a named
-      /// top-level function
-      FirebaseMessaging.onBackgroundMessage(
-          _firebaseMessagingBackgroundHandler);
+        /// Set the background messaging handler early on, as a named
+        /// top-level function
+        FirebaseMessaging.onBackgroundMessage(
+            _firebaseMessagingBackgroundHandler);
+      }
 
       await Sentry.init(
         (options) => options..dsn = Config.getInstance().apiSentry,

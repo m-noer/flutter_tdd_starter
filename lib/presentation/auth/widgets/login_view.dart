@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_tdd_starter/constants/assets_constants.dart';
-import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart';
+import 'package:flutter_tdd_starter/data/auth/models/models.dart';
 import 'package:flutter_tdd_starter/l10n/localizations.dart';
 import 'package:flutter_tdd_starter/presentation/auth/blocs/auth_bloc.dart';
 import 'package:flutter_tdd_starter/presentation/dashboard/pages/dashboard_page.dart';
