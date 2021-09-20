@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.003083">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: flutter clean" time="11.525013">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: flutter pub get" time="6.851748">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: flutter analyze" time="5.491459">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: flutter build appbundle --build-number\=1 --flavor production --target lib/main_production.dart" time="60.628493">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: supply" time="15.343357">
+        
+          <failure message="/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/runner.rb:229:in `chdir&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing&apos;&#10;Fastfile:110:in `block (2 levels) in parsing_binding&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/lane.rb:33:in `call&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/runner.rb:45:in `chdir&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/runner.rb:45:in `execute&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/lane_manager.rb:47:in `cruise_lane&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/commands_generator.rb:109:in `block (2 levels) in run&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/commander-4.6.0/lib/commander/command.rb:187:in `call&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/commander-4.6.0/lib/commander/command.rb:157:in `run&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:117:in `run!&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/commands_generator.rb:353:in `run&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/commands_generator.rb:42:in `start&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/fastlane/lib/fastlane/cli_tools_distributor.rb:122:in `take_off&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/fastlane-2.194.0/bin/fastlane:23:in `&lt;top (required)&gt;&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/bin/fastlane:23:in `load&apos;&#10;/Users/mnoer/.rvm/rubies/ruby-3.0.0/bin/fastlane:23:in `&lt;main&gt;&apos;&#10;/Users/mnoer/.rvm/gems/ruby-3.0.0/bin/ruby_executable_hooks:22:in `eval&apos;&#10;/Users/mnoer/.rvm/gems/ruby-3.0.0/bin/ruby_executable_hooks:22:in `&lt;main&gt;&apos;&#10;&#10;Google Api Error: Invalid request - The Android App Bundle was signed with the wrong key. Found: SHA1: F3:09:ED:BA:BD:C8:D6:65:B5:D2:D7:93:4E:DB:05:BD:B1:A6:F0:F0, expected: SHA1: B2:17:4D:3E:18:E4:EA:E0:DA:FF:BF:9B:02:BD:E4:DF:D1:37:F9:F6." />
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
