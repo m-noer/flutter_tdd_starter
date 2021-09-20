@@ -6,6 +6,7 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:flutter_tdd_starter/core/error/failures.dart' as _i5;
+import 'package:flutter_tdd_starter/data/auth/models/models.dart' as _i7;
 import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart' as _i6;
 import 'package:flutter_tdd_starter/domain/auth/usecases/login_usecase.dart'
     as _i3;
@@ -31,14 +32,14 @@ class MockLoginUsecase extends _i1.Mock implements _i3.LoginUsecase {
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.LoginEntity>> call(
-          _i6.LoginBody? params) =>
+          _i7.LoginBody? params) =>
       (super.noSuchMethod(Invocation.method(#call, [params]),
           returnValue: Future<_i2.Either<_i5.Failure, _i6.LoginEntity>>.value(
               _FakeEither_0<_i5.Failure, _i6.LoginEntity>())) as _i4
           .Future<_i2.Either<_i5.Failure, _i6.LoginEntity>>);
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.LoginEntity>> execute(
-          _i6.LoginBody? params) =>
+          _i7.LoginBody? params) =>
       (super.noSuchMethod(Invocation.method(#execute, [params]),
           returnValue: Future<_i2.Either<_i5.Failure, _i6.LoginEntity>>.value(
               _FakeEither_0<_i5.Failure, _i6.LoginEntity>())) as _i4

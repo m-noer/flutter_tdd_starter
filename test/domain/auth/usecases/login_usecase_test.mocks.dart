@@ -6,6 +6,7 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:flutter_tdd_starter/core/error/failures.dart' as _i5;
+import 'package:flutter_tdd_starter/data/auth/models/models.dart' as _i7;
 import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart' as _i6;
 import 'package:flutter_tdd_starter/domain/auth/repositories/auth_repository.dart'
     as _i3;
@@ -31,7 +32,7 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.LoginEntity>> requestLogin(
-          _i6.LoginBody? body) =>
+          _i7.LoginBody? body) =>
       (super.noSuchMethod(Invocation.method(#requestLogin, [body]),
           returnValue: Future<_i2.Either<_i5.Failure, _i6.LoginEntity>>.value(
               _FakeEither_0<_i5.Failure, _i6.LoginEntity>())) as _i4

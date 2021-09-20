@@ -6,6 +6,7 @@ import 'dart:async' as _i4;
 
 import 'package:flutter_tdd_starter/data/auth/datasources/auth_remote_data_source.dart'
     as _i3;
+import 'package:flutter_tdd_starter/data/auth/models/models.dart' as _i5;
 import 'package:flutter_tdd_starter/domain/auth/entities/entities.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -29,7 +30,7 @@ class MockAuthRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.LoginEntity> requestLogin(_i2.LoginBody? body) =>
+  _i4.Future<_i2.LoginEntity> requestLogin(_i5.LoginBody? body) =>
       (super.noSuchMethod(Invocation.method(#requestLogin, [body]),
               returnValue: Future<_i2.LoginEntity>.value(_FakeLoginEntity_0()))
           as _i4.Future<_i2.LoginEntity>);
