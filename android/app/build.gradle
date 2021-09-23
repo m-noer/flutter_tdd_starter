@@ -65,7 +65,14 @@ android {
                 keyPassword System.getenv("FCI_KEY_PASSWORD")
                 storePassword System.getenv("FCI_KEYSTORE_PASSWORD")
             }
-        } else {
+        } else if (System.getenv("Testing")) {
+            release {
+                storeFile file(System.getenv("../key.jks"))
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+            }
+        }  else {
             release {
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']

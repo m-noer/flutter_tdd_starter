@@ -1,0 +1,46 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+update_fastlane
+
+default_platform(:android)
+
+platform :android do
+
+  desc "Runs all the tests"
+  lane :internal do
+    sh "flutter build appbundle --flavor production -t lib/main_production.dart"
+    supply(
+      aab: "../build/app/outputs/bundle/productionRelease/app-production-release.aab",
+      json_key: '/home/mnoer/Documents/pc-api-4882356594449034616-232-9bde7cc8d1ab.json',
+      track: 'internal',
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      package_name: 'com.nerolab.varxcore',
+    )
+  end
+
+  # desc "Upload to playstore"
+  # lane :playstore do
+  #   flavors.each { |flavor|
+  #     sh "flutter build appbundle --flavor" + flavors + "-t lib/main_production.dart"
+  #   supply(
+  #     aab: "../build/app/outputs/bundle/"+flavors+"Release/app-"+flavors+"-release.aab",
+  #     json_key: '/home/mnoer/Documents/pc-api-4882356594449034616-232-9bde7cc8d1ab.json',
+  #     skip_upload_images: true,
+  #     skip_upload_screenshots: true,
+  #     package_name: 'com.nerolab.varxcore' + flavors
+  #   )
+  #   }
+  # end
+end

@@ -100,7 +100,7 @@ end
 
 platform :android do
   desc 'Builds and signs a production release to distribute in Google Play Store'
-  lane :deploy do
+  lane :internal do
     BUILD_NUMBER = ENV['BUILD_NUMBER'].to_s
     common_build_actions()
     Dir.chdir ".." do
@@ -109,7 +109,7 @@ platform :android do
 
     supply(
       aab: "build/app/outputs/bundle/productionRelease/app-production-release.aab",
-      json_key: '/Users/mnoer/Documents/pc-api-4882356594449034616-232-86fc5d4aa363.json',
+      json_key: '/home/mnoer/Documents/pc-api-4882356594449034616-232-9bde7cc8d1ab.json',
       release_status: 'draft',
       track: 'internal',
       skip_upload_metadata: true,

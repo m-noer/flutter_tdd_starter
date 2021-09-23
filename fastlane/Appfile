@@ -1,4 +1,4 @@
-app_identifier("com.itcraftship.truth-or-dare") # The bundle identifier of your app
+app_identifier("com.nerolab.varxcore") # The bundle identifier of your app
 apple_id(ENV['TOD_APPLE_ID'].to_s) # Your Apple email address
 
-team_id("G6W65KPDR6")  # Developer Portal Team ID
+team_id("team_ID")  # Developer Portal Team ID

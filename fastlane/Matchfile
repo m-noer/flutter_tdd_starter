@@ -4,7 +4,7 @@ storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
-app_identifier(["com.itcraftship.truth-or-dare"])
+app_identifier(["com.nerolab.varxcore"])
 
 keychain_name "itcKeychain"
 keychain_password "secretPass"
