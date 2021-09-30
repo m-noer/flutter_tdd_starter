@@ -1,10 +1,10 @@
-import 'package:flutter_tdd_starter/env/config.dart';
+import 'package:flutter_tdd_starter/env/env_config.dart';
 
 /// * This file is configuration to make separate between environment
 /// see details about [flutter flavor]
 class FlavorSettings {
   FlavorSettings.development() {
-    Config.getInstance(
+    EnvConfig.getInstance(
       flavorName: 'development',
       apiBaseUrl: 'https://api.smartschool.var-x.id/v1',
       apiSentry:
@@ -13,7 +13,7 @@ class FlavorSettings {
   }
 
   FlavorSettings.staging() {
-    Config.getInstance(
+    EnvConfig.getInstance(
       flavorName: 'staging',
       apiBaseUrl: 'https://api.smartschool.var-x.id/v1',
       apiSentry:
@@ -22,7 +22,7 @@ class FlavorSettings {
   }
 
   FlavorSettings.production() {
-    Config.getInstance(
+    EnvConfig.getInstance(
       flavorName: 'production',
       apiBaseUrl: 'https://api.smartschool.var-x.id/v1',
       apiSentry:

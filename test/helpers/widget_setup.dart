@@ -6,15 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'helpers.dart';
 
 void widgetSetup() {
-  setUp(() async {
+  setUpAll(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
     setupFirebaseMessagingMocks();
     await init();
     await Firebase.initializeApp();
-  });
-
-  tearDown(() async {
-    await sl.reset();
   });
 }

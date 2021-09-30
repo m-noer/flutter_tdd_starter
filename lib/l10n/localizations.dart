@@ -10,6 +10,8 @@ extension AppLocalizationsExtensions on BuildContext {
   }
 }
 
+// the int paramter is the generated version. You must increment it each time
+// you want to regenerate a new version of the labels.
 @SheetLocalization('1TWn1tvLS4ac4SOw9pAj87J_E2WlJ9rtqIhNwlLf8scc', '0', 8)
 class AppLocalizationsDelegate
     extends LocalizationsDelegate<AppLocalizationsData> {

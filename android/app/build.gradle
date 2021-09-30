@@ -48,7 +48,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
-
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     // TODO: Remove when below fix is available in stable channel.
@@ -58,21 +58,14 @@ android {
     }
 
     signingConfigs {
-        if (System.getenv("CI")) {
+         if (System.getenv("CI")) {
             release {
-                storeFile file(System.getenv("FCI_KEYSTORE_PATH"))
-                keyAlias System.getenv("FCI_KEY_ALIAS")
-                keyPassword System.getenv("FCI_KEY_PASSWORD")
-                storePassword System.getenv("FCI_KEYSTORE_PASSWORD")
+                storeFile file("../key.jks")
+                storePassword "${System.getenv('STORE_PASSWORD')}"
+                keyAlias "${System.getenv('KEY_ALIAS')}"
+                keyPassword "${System.getenv('KEY_PASSWORD')}"
             }
-        } else if (System.getenv("Testing")) {
-            release {
-                storeFile file(System.getenv("../key.jks"))
-                keyAlias System.getenv("KEY_ALIAS")
-                keyPassword System.getenv("KEY_PASSWORD")
-                storePassword System.getenv("KEYSTORE_PASSWORD")
-            }
-        }  else {
+        } else {
             release {
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
@@ -90,11 +83,11 @@ android {
         }
         staging {
             dimension "default"
-            applicationIdSuffix ""
+            applicationIdSuffix "stg"
         }        
         development {
             dimension "default"
-            applicationIdSuffix ""
+            applicationIdSuffix "dev"
         }
     }
 
@@ -121,5 +114,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
-
+    
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

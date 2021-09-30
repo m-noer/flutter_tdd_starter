@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_tdd_starter/app/app.dart';
 import 'package:flutter_tdd_starter/app/app_bloc_observer.dart';
 import 'package:flutter_tdd_starter/di/injection.dart' as di;
-import 'package:flutter_tdd_starter/env/config.dart';
+import 'package:flutter_tdd_starter/env/env_config.dart';
 import 'package:flutter_tdd_starter/env/flavor.dart';
 import 'package:get/get.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -51,13 +51,13 @@ void main() {
       });
 
       await Sentry.init(
-        (options) => options..dsn = Config.getInstance().apiSentry,
+        (options) => options..dsn = EnvConfig.getInstance().apiSentry,
         appRunner: () => runApp(App()),
       );
 
       ///[console] flavor running
       if (!kReleaseMode) {
-        final settings = Config.getInstance();
+        final settings = EnvConfig.getInstance();
         log('🚀 APP FLAVOR NAME      : ${settings.flavorName}', name: 'ENV');
         log('🚀 APP API_BASE_URL     : ${settings.apiBaseUrl}', name: 'ENV');
         log('🚀 APP API_SENTRY       : ${settings.apiSentry}', name: 'ENV');

@@ -2,10 +2,10 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:flutter_tdd_starter/core/utils/ui/widgets/loading_with_text.dart';
 import 'package:flutter_tdd_starter/presentation/auth/blocs/auth_bloc.dart';
 import 'package:flutter_tdd_starter/presentation/auth/widgets/login_view.dart';
 import 'package:flutter_tdd_starter/presentation/dashboard/pages/dashboard_page.dart';
-import 'package:flutter_tdd_starter/utils/ui/widgets/loading_with_text.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:mocktail/mocktail.dart';
@@ -32,8 +32,6 @@ void main() {
     setUp(() {
       authBlocMock = AuthBlocMock();
       when(() => authBlocMock.state).thenReturn(AuthInitial());
-      // when(() => authBlocMock.loginUsecase.execute(any()))
-      //     .thenAnswer((_) => Future.value(const Right(loginEntity)));
     });
 
     final usernameField = find.byKey(const Key('usernameField'));
@@ -122,8 +120,6 @@ void main() {
         ),
       );
       expect(Get.currentRoute, DashboardPage.route);
-
-      // await tester.pump(const Duration(seconds: 2));
     });
 
     testWidgets('Obscure icon button', (tester) async {

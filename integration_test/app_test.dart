@@ -52,13 +52,13 @@ void main() {
       expect(find.text('Please enter a password'), findsOneWidget);
 
       // Condition 2: Username or password wrong
-      // await tester.tap(usernameField);
-      // await tester.enterText(usernameField, 'guru1');
-      // await tester.tap(passwordField);
-      // await tester.enterText(passwordField, 'passwor');
+      await tester.tap(usernameField);
+      await tester.enterText(usernameField, 'guru1');
+      await tester.tap(passwordField);
+      await tester.enterText(passwordField, 'passwor');
 
-      // await tester.tap(loginBtn);
-      // await pumpForSeconds(tester, 1);
+      await tester.tap(loginBtn);
+      await pumpForSeconds(tester, 1);
 
       // Condition 3: Login success
       await tester.tap(usernameField);
@@ -67,7 +67,7 @@ void main() {
       await tester.enterText(passwordField, 'password');
 
       await tester.tap(loginBtn);
-      await pumpForSeconds(tester, 1);
+      await pumpForSeconds(tester, 4);
 
       // expect(find.byType(DashboardPage), findsOneWidget);
     });

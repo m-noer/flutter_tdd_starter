@@ -2,14 +2,14 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_tdd_starter/constants/key_constants.dart';
-import 'package:flutter_tdd_starter/env/config.dart';
-import 'package:flutter_tdd_starter/utils/services/shared_prefs.dart';
+import 'package:flutter_tdd_starter/core/constants/key_constants.dart';
+import 'package:flutter_tdd_starter/core/utils/services/shared_prefs.dart';
+import 'package:flutter_tdd_starter/env/env_config.dart';
 
 class HttpClient {
   HttpClient({required this.config, required this.preferences});
 
-  late Config config;
+  late EnvConfig config;
   late SharedPrefs preferences;
 
   Dio get dio => _getDio();

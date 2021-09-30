@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tdd_starter/core/utils/services/notification.dart';
+import 'package:flutter_tdd_starter/core/utils/ui/widgets/empty.dart';
 import 'package:flutter_tdd_starter/di/injection.dart';
-import 'package:flutter_tdd_starter/utils/services/notification.dart';
-import 'package:flutter_tdd_starter/utils/ui/widgets/empty.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);

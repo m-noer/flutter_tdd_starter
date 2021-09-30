@@ -16,11 +16,21 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## Android
-### android internal
+### android firebase_distribution
 ```
-fastlane android internal
+fastlane android firebase_distribution
 ```
-Runs all the tests
+deploy android to firebase distribution
+### android upload_to_play_store_internal
+```
+fastlane android upload_to_play_store_internal
+```
+deploy android to internal testing play store
+### android promote_internal_to_production
+```
+fastlane android promote_internal_to_production
+```
+Promote internal to Production
 
 ----
 
